@@ -404,7 +404,6 @@ var ProductsComponent = /** @class */ (function () {
         };
     }
     ProductsComponent.prototype.onSelectProduct = function (product) {
-        event.stopPropagation();
         this.selectedProduct = Object.assign({}, product);
     };
     ProductsComponent.prototype.ngOnInit = function () {
@@ -416,7 +415,7 @@ var ProductsComponent = /** @class */ (function () {
     };
     ProductsComponent.prototype.delete = function (productId) {
         var _this = this;
-        console.log("id:" + productId);
+        event.stopPropagation();
         this.productService.deleteProduct(productId)
             .subscribe(function () {
             _this.products = _this.products.filter(function (product) { return product.id !== productId; });
